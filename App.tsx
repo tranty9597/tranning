@@ -13,19 +13,13 @@ import { View, Button } from 'react-native';
 import { WelcomeScreen } from './src/welcome-screen';
 import { YogaLayout } from './src/yoga-layout';
 import { PaymentCard } from './src/payment-card';
+import { OtpView } from './src/life-cycle';
 
 const App = () => {
-  const [type, setType] = React.useState('master')
-  const changeType = () => {
-    if (type === 'master') return setType('visa')
-    setType('master')
-  }
-  
+
   return (
     <>
-      <PaymentCard type={type} />
-      <Button onPress={changeType} title="change" />
-      <View style={{ height: 60 }} />
+      <OtpView />
     </>
   );
 };
