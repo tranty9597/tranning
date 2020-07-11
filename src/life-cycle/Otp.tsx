@@ -7,7 +7,7 @@ interface FTimerProps {
     /**
      * call when counter state changed with current counter value
      */
-    onCounterChanged: (counterValue: number) => void
+    onCounterChanged: (counterValue: number) => void 
 }
 
 const FTimer: React.FC<FTimerProps> = (props, ref) => {
