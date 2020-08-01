@@ -7,10 +7,14 @@ interface FTimerProps {
     /**
      * call when counter state changed with current counter value
      */
-    onCounterChanged: (counterValue: number) => void 
+    onCounterChanged: (counterValue: number) => void
 }
 
-const FTimer: React.FC<FTimerProps> = (props, ref) => {
+interface FTimerRef {
+    reStartTimer: () => void
+}
+
+const FTimer: React.RefForwardingComponent<FTimerRef, FTimerProps> = (props, ref) => {
     const { onCounterChanged } = props
     const [counter, setCounter] = React.useState(5)
     const [dummy, setDummy] = React.useState(60)
@@ -50,7 +54,6 @@ const FTimer: React.FC<FTimerProps> = (props, ref) => {
         }
     }
     const componentDidMount = () => {
-        console.warn('callBackAfterFirstRender')
         timerRef.current = setInterval(() => {
             setCounter(currentCounter => {
                 if (currentCounter === 1) {
@@ -110,12 +113,12 @@ const FTimer: React.FC<FTimerProps> = (props, ref) => {
     )
 }
 
-const FTimerRefAble = React.forwardRef(FTimer)
+const FTimerRefAble = React.forwardRef<FTimerRef, FTimerProps>(FTimer)
 
 export const OtpView: React.FC = (props) => {
     const [showReSendButton, setShowReSendButton] = React.useState(false)
     const [otp, setOtp] = React.useState('1234')
-    const timerRef = React.useRef<FTimer>()
+    const timerRef = React.useRef<FTimerRef>()
     const onCounterChanged = (value: number) => {
         if (value === 0 && showReSendButton === false) {
             setShowReSendButton(true)
@@ -129,7 +132,7 @@ export const OtpView: React.FC = (props) => {
         return (
             <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <Text
-                    onPress={() => { timerRef.current.reStartTimer() }}
+                    onPress={timerRef.current?.reStartTimer}
                     style={{ fontSize: 18, color: 'blue', paddingTop: 30, textDecorationLine: 'underline' }}
                 >Send the code again</Text>
             </View>

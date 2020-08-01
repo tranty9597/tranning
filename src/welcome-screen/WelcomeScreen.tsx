@@ -2,10 +2,14 @@ import React from 'react';
 import {
     Text, SafeAreaView, Image, TouchableOpacity, View
 } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const AVATAR_URL = 'https://i0.wp.com/danongonline.com.vn/wp-content/uploads/2018/02/anh-girl-xinh-9-1.jpg?fit=624%2C563&ssl=1'
-
-export const WelcomeScreen = () => {
+interface WelcomeScreenProps {
+    navigation: StackNavigationProp<any>
+}
+export const WelcomeScreen = (props: WelcomeScreenProps) => {
+    const { navigation } = props
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'space-around', alignItems: 'center', flexDirection: 'column' }}>
             <Image
@@ -41,14 +45,16 @@ export const WelcomeScreen = () => {
                     If you do not have an Android device for testing, you can use an Android virtual device.To do this, you must first install the Android SDK and install the corresponding SDK platforms and packages. See Set up the Android development environment.
                 </Text>
             </View>
-            <TouchableOpacity style={{
-                backgroundColor: 'green',
-                width: '40%',
-                height: 45,
-                borderRadius: 22.5,
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Otp')}
+                style={{
+                    backgroundColor: 'green',
+                    width: '40%',
+                    height: 45,
+                    borderRadius: 22.5,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
                 <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 20 }}>Đăng nhập</Text>
             </TouchableOpacity>
         </SafeAreaView>

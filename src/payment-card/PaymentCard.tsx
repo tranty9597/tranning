@@ -31,7 +31,6 @@ export const PaymentCard: React.FC<PaymentCardProps> = (props) => {
             setError('Not a valid number')
         }
     }
-    console.warn('render')
     return (
         <SafeAreaView style={styles.container}>
             <View style={[styles.card]}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Text, SafeAreaView, Image, TouchableOpacity, View, StyleSheet
+    Text, SafeAreaView, Image, TouchableOpacity, View, StyleSheet, Button
 } from 'react-native';
 
 export const YogaLayout: React.FC = (props) => {
@@ -15,7 +15,7 @@ export const YogaLayout: React.FC = (props) => {
                 source={{ uri: 'https://photo.techrum.vn/images/2019/02/24/zNRwG.jpg' }}
             />
             <View style={styles.container}>
-                {/* <View style={{ backgroundColor: 'red', width: 60, height: 60, borderRadius: 30 }}>
+                <View style={{ backgroundColor: 'red', width: 60, height: 60, borderRadius: 30 }}>
                     <Text style={{ fontWeight: 'bold', fontFamily: 'AppleSDGothicNeo-Light' }}>1</Text>
                 </View>
                 <View style={[styles.box, styles.boxBlue]}>
@@ -26,10 +26,10 @@ export const YogaLayout: React.FC = (props) => {
                 </View>
                 <View style={[styles.box, styles.boxBlue]}>
                     <Text>3</Text>
-                </View> */}
+                </View>
             </View>
             <View style={[styles.container, { backgroundColor: 'blue', top: 0, left: 60, right: 60 , zIndex: 1 }]}>
-                {/* <View style={{ backgroundColor: 'red', width: 60, height: 60, borderRadius: 30 }}>
+                <View style={{ backgroundColor: 'red', width: 60, height: 60, borderRadius: 30 }}>
                     <Text style={{ fontWeight: 'bold', fontFamily: 'AppleSDGothicNeo-Light' }}>1</Text>
                 </View>
                 <View style={[styles.box, styles.boxBlue]}>
@@ -40,8 +40,9 @@ export const YogaLayout: React.FC = (props) => {
                 </View>
                 <View style={[styles.box, styles.boxBlue]}>
                     <Text>3</Text>
-                </View> */}
+                </View>
             </View>
+            <Button title="Navigate" onPress={() => props.navigation.navigate('PaymentCard')}/>
         </SafeAreaView >
     )
 }

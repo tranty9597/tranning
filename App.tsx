@@ -14,12 +14,13 @@ import { WelcomeScreen } from './src/welcome-screen';
 import { YogaLayout } from './src/yoga-layout';
 import { PaymentCard } from './src/payment-card';
 import { OtpView } from './src/life-cycle';
+import { RootNavigator } from './src/navigation';
 
 const App = () => {
 
   return (
     <>
-      <OtpView />
+      <RootNavigator />
     </>
   );
 };
